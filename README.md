@@ -1,17 +1,19 @@
 # Smart Hostel Maintenance System
 
-A Flask-based hostel complaint management prototype developed as a mini-project case study for **AI-Driven Software Engineering & Project Management**.
+A Flask-based hostel complaint management application developed as a mini-project case study for **AI-Driven Software Engineering & Project Management**.
 
-## Current baseline features
+## Features
 - Student complaint registration with category and description.
 - Server-side validation of required fields and allowed categories.
 - Warden dashboard listing submitted complaints.
 - Complaint status updates: Pending, In Progress, and Resolved.
 - Dashboard counts for total and status-wise complaints.
+- SQLite persistence for complaint records.
 
 ## Technology
 - Python 3.10+
 - Flask
+- SQLite (Python standard library)
 - Jinja templates
 - pytest for automated tests
 - GitHub Actions for continuous integration
@@ -28,15 +30,20 @@ python app.py
 
 Open http://127.0.0.1:5000.
 
+By default, SQLite creates `instance/complaints.sqlite3`. Set `SHMS_DATABASE` to use a different database path.
+
 ## Run tests
 
 ```bash
-pytest -q
+python -m pip install -r requirements.txt
+python -m pytest -q
 ```
+
+The test suite uses a temporary SQLite database and does not touch the local application database.
 
 ## Run in Google Colab
 
-Install the dependencies, then run this in a notebook cell after uploading/cloning the repository:
+Clone or upload this repository, install its requirements, and run this in a notebook cell:
 
 ```python
 import socket
@@ -72,13 +79,15 @@ output.serve_kernel_port_as_iframe(
 )
 ```
 
+For a persistent demo in Colab, set `app.config["DATABASE"]` to a path in the mounted Google Drive before the first request. The default Colab filesystem is temporary.
+
 ## Current limitations and planned enhancements
-The prototype currently stores complaints in memory, so records disappear when the process restarts. It does not yet include a database, login, role-based access, maintenance-staff assignment, or an AI model in the running application. These are documented as planned enhancements in Jira and the `docs/` directory.
+Student/warden authentication, role-based authorization, maintenance-staff assignment, and a runtime AI classifier are not implemented yet. These remain planned enhancements in Jira. The AI case-study log distinguishes AI assistance used during engineering from AI functionality included in the application.
 
 ## Project management
 Jira project: [SHMS - Smart Hostel Maintenance System](https://vishalrs11611.atlassian.net/jira/software/projects/SHMS/summary)
 
-Use Jira issue keys in branch names and commit messages (for example, `SHMS-7-flask-project-structure` and `SHMS-7 Refactor Flask app`).
+Use Jira issue keys in branch names and commit messages (for example, `SHMS-18-sqlite-persistence` and `SHMS-18 Persist complaints in SQLite`).
 
 ## Documentation
 - [Requirements baseline](docs/requirements.md)
@@ -86,6 +95,3 @@ Use Jira issue keys in branch names and commit messages (for example, `SHMS-7-fl
 - [Test cases](docs/test-cases.md)
 - [AI usage log](docs/ai-usage-log.md)
 - [Case study plan](docs/case-study-plan.md)
-
-## Academic integrity and AI use
-AI assistance is documented in `docs/ai-usage-log.md`. AI-generated code and test suggestions must be reviewed and verified by running tests. The application is not described as AI-powered unless an AI runtime feature is actually implemented and evaluated.
