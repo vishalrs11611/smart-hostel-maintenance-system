@@ -10,15 +10,15 @@ Provide a web-based workflow for hostel students to register maintenance complai
 
 ## Functional requirements
 
-| ID | Requirement | Baseline |
+| ID | Requirement | Status |
 |---|---|---|
-| FR-01 | Capture student name, complaint category and description | Implemented in prototype |
-| FR-02 | Reject missing complaint fields | Basic server-side validation implemented |
-| FR-03 | Set new complaints to Pending | Implemented in prototype |
-| FR-04 | Display complaints in a warden dashboard | Implemented in prototype |
-| FR-05 | Update status among Pending, In Progress and Resolved | Implemented in prototype |
-| FR-06 | Show total and status-wise complaint counts | Implemented in prototype |
-| FR-07 | Persist complaint records across restarts | Planned: SQLite |
+| FR-01 | Capture student name, complaint category and description | Implemented |
+| FR-02 | Reject missing complaint fields | Implemented with server-side validation |
+| FR-03 | Set new complaints to Pending | Implemented |
+| FR-04 | Display complaints in a warden dashboard | Implemented |
+| FR-05 | Update status among Pending, In Progress and Resolved | Implemented |
+| FR-06 | Show total and status-wise complaint counts | Implemented |
+| FR-07 | Persist complaint records across requests and restarts | Implemented in SHMS-18 branch; pending review/merge |
 | FR-08 | Authenticate students and wardens | Planned |
 | FR-09 | Restrict warden operations by role | Planned |
 | FR-10 | Assign complaints to maintenance staff | Planned |
@@ -28,8 +28,10 @@ Provide a web-based workflow for hostel students to register maintenance complai
 - Validate input on the server.
 - Render user-provided content with template autoescaping.
 - Keep secrets out of source control.
+- Use parameterized SQL for user-provided values.
+- Close request-scoped database connections.
 - Provide repeatable automated tests.
-- Document known limitations and setup steps.
+- Document setup, configuration and known limitations.
 
-## Current limitations
-The initial prototype uses a Python list for complaint storage. Data is lost when the server process stops. The prototype does not currently implement login, role-based access, staff assignment, a database, or an AI model. Those items are tracked as future work rather than completed capabilities.
+## Known limitations
+Authentication, role-based access, staff assignment and an AI model are not implemented. The current application exposes the warden dashboard without role-based protection; this must be addressed before production use. The SQLite feature remains subject to PR review and CI verification.
