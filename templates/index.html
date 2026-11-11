@@ -134,17 +134,16 @@
                 </thead>
                 <tbody>
                 {% for complaint in complaints %}
-                {% set complaint_index = loop.index0 %}
                 <tr>
-                    <td>{{ loop.index }}</td>
+                    <td>{{ complaint.id }}</td>
                     <td>{{ complaint.student }}</td>
                     <td>{{ complaint.category }}</td>
                     <td>{{ complaint.description }}</td>
                     <td class="status">{{ complaint.status }}</td>
                     <td>
-                        <form action="{{ url_for('update', index=complaint_index) }}" method="post">
-                            <label for="status-{{ loop.index }}">New status</label>
-                            <select id="status-{{ loop.index }}" name="status">
+                        <form action="{{ url_for('update', complaint_id=complaint.id) }}" method="post">
+                            <label for="status-{{ complaint.id }}">New status</label>
+                            <select id="status-{{ complaint.id }}" name="status">
                                 {% for status in statuses %}
                                 <option value="{{ status }}"
                                     {% if status == complaint.status %}selected{% endif %}>
