@@ -6,7 +6,8 @@ This log distinguishes AI assistance used during engineering from AI features in
 |---|---|---|---|---|
 | 2026-11-11 | Initial Flask troubleshooting | Suggested using Colab's iframe port helper and a server-readiness check | User ran the revised startup cell and confirmed the dashboard opened | User-confirmed working in Colab |
 | 2026-11-11 | Project planning | Helped structure epics, user stories, tasks and acceptance criteria for Jira | Project scope was grounded in the supplied Flask prototype; unimplemented features were labelled as planned | Jira backlog created |
-| 2026-11-11 | Repository organization | Prepared a Flask/template split, documentation, and automated test scaffolding | Pending: run tests and review the GitHub branch before merging | Not yet verified |
+| 2026-11-11 | Repository organization | Prepared a Flask/template split, documentation, and automated test scaffolding | Reviewed the branch and workflow output; GitHub Actions executed the test suite | 10 tests passed in GitHub Actions; pull request remains open for review |
+| 2026-11-11 | CI failure diagnosis | Analyzed the first Actions failure and identified the test import-path problem; changed the workflow to use `python -m pytest` | Verified the subsequent pull-request Actions run and test log | CI passed; initial failure and corrective action retained as case-study evidence |
 
 ## Responsible-use rules
 - AI output is a proposal, not proof of correctness.
