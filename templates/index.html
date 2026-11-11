@@ -134,6 +134,7 @@
                 </thead>
                 <tbody>
                 {% for complaint in complaints %}
+                {% set complaint_index = loop.index0 %}
                 <tr>
                     <td>{{ loop.index }}</td>
                     <td>{{ complaint.student }}</td>
@@ -141,7 +142,7 @@
                     <td>{{ complaint.description }}</td>
                     <td class="status">{{ complaint.status }}</td>
                     <td>
-                        <form action="{{ url_for('update', index=loop.index0) }}" method="post">
+                        <form action="{{ url_for('update', index=complaint_index) }}" method="post">
                             <label for="status-{{ loop.index }}">New status</label>
                             <select id="status-{{ loop.index }}" name="status">
                                 {% for status in statuses %}
