@@ -28,6 +28,3 @@ How can Agile planning, Git-based version control, automated testing, and respon
 - Defects found and corrected.
 - Features completed versus planned.
 - Qualitative observations on where AI assistance helped or required correction.
-
-## Integrity note
-Do not report target outcomes as achieved results. Capture actual project dates, test results, sprint outcomes, and limitations during execution.
